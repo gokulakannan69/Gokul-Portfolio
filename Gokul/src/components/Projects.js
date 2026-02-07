@@ -157,25 +157,39 @@ const TechList = styled.ul`
 const Projects = () => {
   const projects = [
     {
-      title: "Order Management System",
-      description: "A full-stack Customer Order Management System built with React, Node.js, and Google Sheets. Features include user details, product management, order tracking, and payment integration.",
-      tech: ["React", "Node.js", "Google Sheets API"],
-      github: "https://github.com/vipsystem-1/hardware-shop-frontend",
-      link: "https://vipsystems.pages.dev/admin/login"
+      title: "Amurta Hospital",
+      description: "An advanced heart disease prediction system with AI-powered analysis. Features collaborative AI decision-making, confidence-aware predictions, cause-effect explanations, and blockchain-verified medical reports.",
+      tech: ["TypeScript", "React", "Gemini AI", "Machine Learning"],
+      github: "https://github.com/gokulakannan69/Amurta-Hospital",
+      link: "https://github.com/gokulakannan69/Amurta-Hospital"
     },
     {
-      title: "Task Manager",
-      description: "A responsive task management application with real-time updates. Built using React, Firebase, and Material-UI with features like task categorization, due dates, and team collaboration.",
-      tech: ["React", "Firebase", "Material-UI"],
-      github: "https://github.com/gokulakannan69/task-manager",
-      link: "https://your-task-app-demo.com"
+      title: "Customer Business Management",
+      description: "A comprehensive business management system for tracking customers, orders, and inventory. Built with modern JavaScript frameworks for seamless business operations and data management.",
+      tech: ["JavaScript", "React", "Node.js", "Database"],
+      github: "https://github.com/gokulakannan69/Customer-Business-Management-System",
+      link: "https://github.com/gokulakannan69/Customer-Business-Management-System"
     },
     {
-      title: "Weather Dashboard",
-      description: "A weather forecast application providing real-time weather data using OpenWeatherMap API. Features location search and 5-day forecast with beautiful UI.",
-      tech: ["React", "OpenWeatherMap API", "Styled Components"],
-      github: "https://github.com/gokulakannan69/weather-dashboard",
-      link: "https://your-weather-demo.com"
+      title: "Gokul Portfolio",
+      description: "A modern, responsive portfolio website showcasing projects and skills. Features smooth animations, mobile-first design, and optimized performance with Vercel deployment.",
+      tech: ["JavaScript", "React", "Styled Components", "Framer Motion"],
+      github: "https://github.com/gokulakannan69/Gokul-Portfolio",
+      link: "https://gokul-portfolio-jade.vercel.app"
+    },
+    {
+      title: "HandSpeak Sign Language",
+      description: "A machine learning-based sign language recognition system that translates hand gestures into text. Uses computer vision and deep learning for real-time gesture detection and interpretation.",
+      tech: ["Python", "TensorFlow", "OpenCV", "Machine Learning"],
+      github: "https://github.com/gokulakannan69/HandSpeak-Sign-in-Language",
+      link: "https://github.com/gokulakannan69/HandSpeak-Sign-in-Language"
+    },
+    {
+      title: "Women Safety App",
+      description: "A safety application designed to enhance women's security with features like emergency alerts, location tracking, and quick access to emergency contacts. Built with modern TypeScript for reliability.",
+      tech: ["TypeScript", "React", "Geolocation API", "Real-time Alerts"],
+      github: "https://github.com/gokulakannan69/Women-Safety",
+      link: "https://github.com/gokulakannan69/Women-Safety"
     }
   ];
 
