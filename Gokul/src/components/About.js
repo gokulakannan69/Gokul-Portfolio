@@ -9,183 +9,141 @@ const AboutSection = styled.section`
   padding: 100px 0;
   background: ${theme.background};
   color: ${theme.text};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Container = styled.div`
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 50px;
-  align-items: center;
+  text-align: center;
 
   ${device.tablet} {
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
     padding: 0 50px;
   }
 `;
 
-const Content = styled.div`
-  order: 2;
+const SectionTitle = styled(motion.h2)`
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: ${theme.lightGray};
+  font-weight: 700;
+
+  ${device.tablet} {
+    font-size: 3.5rem;
+  }
+`;
+
+const Subtitle = styled(motion.p)`
+  color: ${theme.accent};
+  font-family: ${theme.fontMono};
+  font-size: 1rem;
+  margin-bottom: 3rem;
   
   ${device.tablet} {
-    order: 1;
-  }
-
-  h2 {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: ${theme.lightGray};
-    white-space: nowrap;
-
-    &::before {
-      content: '02.';
-      color: ${theme.accent};
-      font-family: ${theme.fontMono};
-      font-size: 1.2rem;
-      margin-right: 10px;
-      font-weight: 400;
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      width: 200px;
-      height: 1px;
-      background: ${theme.darkGray};
-      margin-left: 20px;
-    }
-
-    ${device.tablet} {
-      font-size: 2rem;
-    }
-  }
-
-  p {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: ${theme.secondary};
+    font-size: 1.1rem;
   }
 `;
 
-const ImageContainer = styled(motion.div)`
-  position: relative;
-  max-width: 350px;
-  width: 100%;
-  margin: 0 auto;
-  order: 1;
+const ProfileImage = styled(motion.div)`
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid ${theme.accent};
+  box-shadow: ${theme.shadow};
+  transition: ${theme.transition};
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   ${device.tablet} {
-    order: 2;
-    margin: 0;
-  }
-
-  .wrapper {
-    display: block;
-    position: relative;
-    width: 100%;
-    border-radius: ${theme.borderRadius};
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-
-    &:hover,
-    &:focus {
-      outline: 0;
-      transform: translateY(-5px);
-      transition: ${theme.transition};
-
-      &::after {
-        top: 15px;
-        left: 15px;
-      }
-    }
-
-    .img {
-      position: relative;
-      border-radius: ${theme.borderRadius};
-      transition: ${theme.transition};
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: ${theme.borderRadius};
-      transition: ${theme.transition};
-      border: 1px solid ${theme.primary};
-      top: 20px;
-      left: 20px;
-      z-index: -1;
-    }
+    width: 220px;
+    height: 220px;
+    margin-bottom: 3rem;
   }
 `;
 
-const SkillsList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(2, minmax(140px, 200px));
-  gap: 0 10px;
-  padding: 0;
-  margin: 20px 0 0 0;
-  overflow: hidden;
-  list-style: none;
+const Bio = styled(motion.div)`
+  font-size: 1rem;
+  line-height: 1.8;
+  color: ${theme.text};
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
 
-  li {
-    position: relative;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    font-family: ${theme.fontMono};
-    font-size: 0.8rem;
-    color: ${theme.text};
+  p {
+    margin-bottom: 1.5rem;
+  }
 
-    &::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: ${theme.accent};
-    }
+  strong {
+    color: ${theme.lightGray};
+    font-weight: 600;
+  }
+
+  ${device.tablet} {
+    font-size: 1.15rem;
+    padding: 0;
   }
 `;
 
 const About = () => {
-  const skills = ['JavaScript (ES6+)', 'React', 'Node.js', 'Styled Components', 'HTML & CSS', 'Git'];
-
   return (
     <AboutSection id="about">
       <Container>
-        <Content data-aos="fade-up">
-          <h2>About Me</h2>
+        <Subtitle
+          data-aos="fade-up"
+        >
+          Get to know me
+        </Subtitle>
+        <SectionTitle
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          About Me
+        </SectionTitle>
+
+        <ProfileImage
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <img
+            src="/images/pic 2.jpeg"
+            alt="Gokulakannan - Full Stack Developer"
+          />
+        </ProfileImage>
+
+        <Bio
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <p>
-            I’m Gokulakannan, a full-stack web developer who builds modern, accessible, and scalable web applications using React and Node.js. I enjoy turning creative ideas into powerful digital experiences.
+            Hello! I'm <strong>Gokulakannan</strong>, a passionate Full-Stack Developer
+            specializing in building exceptional digital experiences. I graduated with a
+            <strong> B.Tech in Information Technology</strong> from Anna University.
           </p>
           <p>
-            Fast-forward to today, and I've had the privilege of working on various projects. My main focus these days is building accessible, inclusive products and digital experiences.
+            My journey in web development started with curiosity and has evolved into a
+            career where I create modern, accessible, and user-friendly web applications.
+            I specialize in <strong>React.js</strong> for dynamic user interfaces and
+            <strong> Node.js</strong> for robust backend systems.
           </p>
-          <p>Here are a few technologies I've been working with recently:</p>
-          <SkillsList>
-            {skills.map((skill, i) => (
-              <li key={i}>{skill}</li>
-            ))}
-          </SkillsList>
-        </Content>
-        <ImageContainer data-aos="fade-left">
-          <div className="wrapper">
-            <img
-              className="img"
-              src="/images/profile.jpg"
-              alt="Profile"
-            />
-          </div>
-        </ImageContainer>
+          <p>
+            When I'm not coding, I enjoy exploring new technologies, contributing to
+            open-source projects, and staying updated with the latest web development trends.
+          </p>
+        </Bio>
       </Container>
     </AboutSection>
   );

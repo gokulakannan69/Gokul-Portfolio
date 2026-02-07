@@ -13,68 +13,79 @@ const ProjectsSection = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  text-align: center;
 
   ${device.tablet} {
     padding: 0 50px;
   }
 `;
 
-const Title = styled.h2`
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  margin-bottom: 3rem;
+const SectionTitle = styled(motion.h2)`
+  font-size: 2rem;
+  margin-bottom: 1rem;
   color: ${theme.lightGray};
-  white-space: nowrap;
-
-  &::before {
-    content: '03.';
-    color: ${theme.accent};
-    font-family: ${theme.fontMono};
-    font-size: 1.2rem;
-    margin-right: 10px;
-    font-weight: 400;
-  }
-
-  &::after {
-    content: '';
-    display: block;
-    width: 300px;
-    height: 1px;
-    background: ${theme.darkGray};
-    margin-left: 20px;
-  }
+  font-weight: 700;
 
   ${device.tablet} {
-    font-size: 2rem;
+    font-size: 3.5rem;
+  }
+`;
+
+const Subtitle = styled(motion.p)`
+  color: ${theme.accent};
+  font-family: ${theme.fontMono};
+  font-size: 1rem;
+  margin-bottom: 4rem;
+  
+  ${device.tablet} {
+    font-size: 1.1rem;
   }
 `;
 
 const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: 3rem;
   
   ${device.tablet} {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  ${device.laptop} {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
 const ProjectCard = styled(motion.div)`
   background: ${theme.cardBackground};
-  border-radius: ${theme.borderRadius};
-  padding: 2rem 1.75rem;
+  border-radius: 12px;
+  padding: 1.5rem;
   transition: ${theme.transition};
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  
+  ${device.tablet} {
+    padding: 2rem;
+  }
+  
   &:hover {
-    transform: translateY(-7px);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: ${theme.accent};
+    
+    .folder-icon {
+      color: ${theme.accent};
+    }
+    
+    h3 {
+      color: ${theme.accent};
+    }
   }
 `;
 
@@ -82,12 +93,13 @@ const ProjectHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 
 const FolderIcon = styled.div`
   color: ${theme.accent};
   font-size: 40px;
+  transition: ${theme.transition};
 `;
 
 const ProjectLinks = styled.div`
@@ -96,7 +108,8 @@ const ProjectLinks = styled.div`
   
   a {
     color: ${theme.text};
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    transition: ${theme.transition};
     
     &:hover {
       color: ${theme.accent};
@@ -106,23 +119,12 @@ const ProjectLinks = styled.div`
 
 const ProjectTitle = styled.h3`
   color: ${theme.lightGray};
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   font-weight: 600;
   
-  a {
-    position: static;
-    
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
+  ${device.tablet} {
+    font-size: 1.5rem;
   }
 `;
 
@@ -131,6 +133,7 @@ const ProjectDescription = styled.p`
   font-size: 1rem;
   margin-bottom: 1.5rem;
   flex-grow: 1;
+  line-height: 1.6;
 `;
 
 const TechList = styled.ul`
@@ -139,13 +142,15 @@ const TechList = styled.ul`
   padding: 0;
   margin: 0;
   list-style: none;
+  gap: 0.5rem;
   
   li {
     font-family: ${theme.fontMono};
-    font-size: 0.8rem;
-    color: ${theme.text};
-    margin-right: 15px;
-    margin-bottom: 5px;
+    font-size: 0.85rem;
+    color: ${theme.accent};
+    background: rgba(37, 99, 235, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
   }
 `;
 
@@ -153,38 +158,36 @@ const Projects = () => {
   const projects = [
     {
       title: "Order Management System",
-      description: "A full-stack Customer Order Management System built with React, Node.js, and Google Sheet. Features include user details, product details, order details, and payment integration.",
-      tech: ["React", "Node.js", "Google Sheet"],
+      description: "A full-stack Customer Order Management System built with React, Node.js, and Google Sheets. Features include user details, product management, order tracking, and payment integration.",
+      tech: ["React", "Node.js", "Google Sheets API"],
       github: "https://github.com/vipsystem-1/hardware-shop-frontend",
       link: "https://vipsystems.pages.dev/admin/login"
     },
     {
       title: "Task Manager",
-      description: "A responsive task management application with real-time updates. Built using React, Firebase, and Material-UI. Includes features like task categorization, due dates, and team collaboration.",
-      tech: ["React", "Firebase", "MUI"],
-      github: "https://github.com/yourusername/task-manager",
+      description: "A responsive task management application with real-time updates. Built using React, Firebase, and Material-UI with features like task categorization, due dates, and team collaboration.",
+      tech: ["React", "Firebase", "Material-UI"],
+      github: "https://github.com/gokulakannan69/task-manager",
       link: "https://your-task-app-demo.com"
     },
     {
       title: "Weather Dashboard",
-      description: "A weather forecast application that provides real-time weather data using OpenWeatherMap API. Built with React and styled-components, featuring location search and 5-day forecast.",
-      tech: ["React", "OpenWeatherMap", "Styled Components"],
-      github: "https://github.com/yourusername/weather-dashboard",
+      description: "A weather forecast application providing real-time weather data using OpenWeatherMap API. Features location search and 5-day forecast with beautiful UI.",
+      tech: ["React", "OpenWeatherMap API", "Styled Components"],
+      github: "https://github.com/gokulakannan69/weather-dashboard",
       link: "https://your-weather-demo.com"
-    },
-    {
-      title: "Portfolio V1",
-      description: "A modern portfolio website built with React and styled-components. Features smooth scrolling, responsive design, and animated components using Framer Motion.",
-      tech: ["React", "Framer Motion", "Styled Components"],
-      github: "https://github.com/yourusername/portfolio",
-      link: "https://your-portfolio-demo.com"
     }
   ];
 
   return (
     <ProjectsSection id="projects">
       <Container>
-        <Title data-aos="fade-up">Some Things I've Built</Title>
+        <Subtitle data-aos="fade-up">
+          My work
+        </Subtitle>
+        <SectionTitle data-aos="fade-up" data-aos-delay="100">
+          Featured Projects
+        </SectionTitle>
         <ProjectsGrid>
           {projects.map((project, index) => (
             <ProjectCard
@@ -193,8 +196,8 @@ const Projects = () => {
               data-aos-delay={index * 100}
             >
               <ProjectHeader>
-                <FolderIcon>
-                  <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                <FolderIcon className="folder-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                 </FolderIcon>
                 <ProjectLinks>
                   <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Link">

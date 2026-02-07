@@ -10,7 +10,7 @@ const Nav = styled(motion.nav)`
   top: 0;
   width: 100%;
   height: ${theme.navHeight};
-  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.9)' : 'transparent'};
+  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.85)' : 'transparent'};
   backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
   box-shadow: ${props => props.scrolled ? theme.shadow : 'none'};
   display: flex;
@@ -115,7 +115,8 @@ const menuItems = [
   { title: '03. Education', to: 'education' },
   { title: '04. Skills', to: 'skills' },
   { title: '05. Projects', to: 'projects' },
-  { title: '06. Contact', to: 'contact' },
+  { title: '06. Certificates', to: 'certifications' },
+  { title: '07. Contact', to: 'contact' },
 ];
 
 const Navbar = () => {

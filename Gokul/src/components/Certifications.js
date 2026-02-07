@@ -30,7 +30,7 @@ const Title = styled.h2`
   white-space: nowrap;
 
   &::before {
-    content: '05.';
+    content: '06.';
     color: ${theme.accent};
     font-family: ${theme.fontMono};
     font-size: 1.2rem;

@@ -17,85 +17,106 @@ const ContactSection = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
 `;
 
-const PreTitle = styled.p`
+const Subtitle = styled(motion.p)`
   color: ${theme.accent};
   font-family: ${theme.fontMono};
   font-size: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  
+  ${device.tablet} {
+    font-size: 1.1rem;
+  }
 `;
 
-const Title = styled.h2`
-  font-size: 2.5rem;
+const Title = styled(motion.h2)`
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   color: ${theme.lightGray};
-  font-weight: 600;
+  font-weight: 700;
 
   ${device.tablet} {
     font-size: 3.5rem;
+    margin-bottom: 2rem;
   }
 `;
 
-const Description = styled.p`
+const Description = styled(motion.p)`
   color: ${theme.text};
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+  
+  ${device.tablet} {
+    font-size: 1.15rem;
+    margin-bottom: 3rem;
+    padding: 0;
+  }
 `;
 
-const ContactButton = styled(motion.a)`
+const EmailLink = styled(motion.a)`
   display: inline-block;
-  padding: 1.25rem 1.75rem;
-  background: transparent;
-  color: ${theme.accent};
+  padding: 1rem 2rem;
+  background: ${theme.accent};
+  color: ${theme.background};
   text-decoration: none;
-  border: 1px solid ${theme.accent};
-  border-radius: ${theme.borderRadius};
+  border-radius: 50px;
   font-family: ${theme.fontMono};
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   transition: ${theme.transition};
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+
+  ${device.tablet} {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
 
   &:hover {
-    background: rgba(100, 255, 218, 0.1);
+    background: ${theme.primary};
     transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
   }
 `;
 
-const SocialLinks = styled.div`
+const SocialLinks = styled(motion.div)`
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: auto;
+  margin-bottom: 4rem;
 
   a {
     color: ${theme.text};
-    font-size: 1.5rem;
+    font-size: 2rem;
     transition: ${theme.transition};
 
     &:hover {
       color: ${theme.accent};
-      transform: translateY(-3px);
+      transform: translateY(-5px);
     }
   }
 `;
 
 const Footer = styled.footer`
-  margin-top: 5rem;
+  margin-top: 3rem;
   font-family: ${theme.fontMono};
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: ${theme.text};
+  opacity: 0.7;
   
-  a {
-    color: ${theme.text};
-    &:hover {
-      color: ${theme.accent};
-    }
+  p {
+    margin: 0.5rem 0;
   }
 `;
 
@@ -103,22 +124,27 @@ const Contact = () => {
   return (
     <ContactSection id="contact">
       <Container>
-        <PreTitle data-aos="fade-up">06. What's Next?</PreTitle>
-        <Title data-aos="fade-up" data-aos-delay="100">Get In Touch</Title>
+        <Subtitle data-aos="fade-up">
+          What's next?
+        </Subtitle>
+        <Title data-aos="fade-up" data-aos-delay="100">
+          Get In Touch
+        </Title>
         <Description data-aos="fade-up" data-aos-delay="200">
-          I'm currently looking for new opportunities, and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          I'm currently looking for new opportunities and my inbox is always open.
+          Whether you have a question or just want to say hi, I'll try my best to get back to you!
         </Description>
 
-        <ContactButton
+        <EmailLink
           href="mailto:gokulkannangk28@gmail.com"
           data-aos="fade-up"
           data-aos-delay="300"
         >
           Say Hello
-        </ContactButton>
+        </EmailLink>
 
         <SocialLinks data-aos="fade-up" data-aos-delay="400">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <a href="https://github.com/gokulakannan69" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <FaGithub />
           </a>
           <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -133,7 +159,8 @@ const Contact = () => {
         </SocialLinks>
 
         <Footer>
-          <p>Designed & Built by Gokulakannan S</p>
+          <p>Designed & Built by Gokulakannan</p>
+          <p>© {new Date().getFullYear()}</p>
         </Footer>
       </Container>
     </ContactSection>

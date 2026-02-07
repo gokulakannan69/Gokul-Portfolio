@@ -15,6 +15,8 @@ const GlobalStyles = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: ${theme.darkGray} ${theme.background};
   }
 
   body {
@@ -28,10 +30,21 @@ const GlobalStyles = createGlobalStyle`
     color: ${theme.text};
     font-family: ${theme.fontPrimary};
     font-size: 16px;
-    line-height: 1.3;
+    line-height: 1.6;
 
     @media (max-width: 480px) {
       font-size: 14px;
+    }
+
+    &.blur {
+      overflow: hidden;
+
+      #content > * {
+        filter: blur(5px) brightness(0.7);
+        transition: ${theme.transition};
+        pointer-events: none;
+        user-select: none;
+      }
     }
   }
 
@@ -45,7 +58,6 @@ const GlobalStyles = createGlobalStyle`
   p {
     margin: 0 0 15px 0;
     color: ${theme.text};
-    line-height: 1.6;
   }
 
   a {
@@ -60,6 +72,27 @@ const GlobalStyles = createGlobalStyle`
     &:hover,
     &:focus {
       color: ${theme.accent};
+    }
+    
+    &.inline-link {
+        color: ${theme.accent};
+        display: inline-block;
+        
+        &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            position: relative;
+            bottom: 0.2em;
+            background-color: ${theme.accent};
+            transition: ${theme.transition};
+            opacity: 0.5;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
     }
   }
 
@@ -94,15 +127,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #999;
+    background-color: ${theme.secondary};
     border: 3px solid ${theme.background};
     border-radius: 10px;
   }
 
   /* Selection */
   ::selection {
-    background-color: #000;
-    color: #fff;
+    background-color: ${theme.accent};
+    color: ${theme.background};
   }
 `;
 

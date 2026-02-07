@@ -5,133 +5,125 @@ import { theme } from '../utils/theme';
 import { device } from '../utils/mediaQueries';
 
 const SkillsSection = styled.section`
-  min-height: 100vh;
+  min-height: 60vh;
   padding: 100px 0;
-  background: ${theme.background};
+  background: ${theme.cardBackground};
   color: ${theme.text};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Container = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
+  text-align: center;
 
   ${device.tablet} {
     padding: 0 50px;
   }
 `;
 
-const Title = styled.h2`
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  margin-bottom: 3rem;
+const SectionTitle = styled(motion.h2)`
+  font-size: 2rem;
+  margin-bottom: 1rem;
   color: ${theme.lightGray};
-  white-space: nowrap;
-
-  &::before {
-    content: '04.';
-    color: ${theme.accent};
-    font-family: ${theme.fontMono};
-    font-size: 1.2rem;
-    margin-right: 10px;
-    font-weight: 400;
-  }
-
-  &::after {
-    content: '';
-    display: block;
-    width: 300px;
-    height: 1px;
-    background: ${theme.darkGray};
-    margin-left: 20px;
-  }
+  font-weight: 700;
 
   ${device.tablet} {
-    font-size: 2rem;
+    font-size: 3.5rem;
   }
 `;
 
-const CategoryContainer = styled.div`
-  margin-bottom: 3rem;
-`;
-
-const CategoryTitle = styled.h3`
-  font-size: 1.2rem;
-  color: ${theme.lightGray};
-  margin-bottom: 1.5rem;
+const Subtitle = styled(motion.p)`
+  color: ${theme.accent};
   font-family: ${theme.fontMono};
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  
+  ${device.tablet} {
+    font-size: 1.1rem;
+  }
 `;
 
 const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  ${device.tablet} {
+    gap: 1rem;
+  }
 `;
 
-const SkillCard = styled(motion.div)`
-  background: ${theme.cardBackground};
-  padding: 1rem;
-  border-radius: ${theme.borderRadius};
-  text-align: center;
+const SkillBadge = styled(motion.div)`
+  background: ${theme.background};
+  padding: 0.65rem 1.2rem;
+  border-radius: 50px;
+  font-family: ${theme.fontMono};
+  font-size: 0.85rem;
+  color: ${theme.text};
+  border: 2px solid ${theme.darkGray};
   transition: ${theme.transition};
   cursor: default;
 
   &:hover {
-    transform: translateY(-5px);
+    border-color: ${theme.accent};
     color: ${theme.accent};
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
   }
-`;
 
-const SkillName = styled.span`
-  color: ${theme.text};
-  font-size: 0.9rem;
-  font-family: ${theme.fontMono};
-  
-  ${SkillCard}:hover & {
-    color: ${theme.accent};
+  ${device.tablet} {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
   }
 `;
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      skills: ["React.js", "HTML5", "CSS3", "JavaScript", "Tailwind CSS","Typescript"]
-    },
-    {
-      title: "Backend Development",
-      skills: ["Node.js","Google Sheet APi"]
-    },
-    {
-      title: "Tools & DevOps",
-      skills: ["Git", "GitHub",  "VS Code", "Figma","Vibe Coder","System Hardware"]
-    }
+  const skills = [
+    'JavaScript (ES6+)',
+    'TypeScript',
+    'React.js',
+    'Node.js',
+    'Express',
+    'HTML5 & CSS3',
+    'Styled Components',
+    'Tailwind CSS',
+    'REST APIs',
+    'Firebase',
+    'Git & GitHub',
+    'Responsive Design',
+    'Framer Motion'
   ];
 
   return (
     <SkillsSection id="skills">
       <Container>
-        <Title data-aos="fade-up">Skills & Technologies</Title>
+        <Subtitle data-aos="fade-up">
+          My expertise
+        </Subtitle>
+        <SectionTitle data-aos="fade-up" data-aos-delay="100">
+          Skills & Technologies
+        </SectionTitle>
 
-        {skillCategories.map((category, catIndex) => (
-          <CategoryContainer key={catIndex}>
-            <CategoryTitle data-aos="fade-right">{category.title}</CategoryTitle>
-            <SkillsGrid>
-              {category.skills.map((skill, index) => (
-                <SkillCard
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <SkillName>{skill}</SkillName>
-                </SkillCard>
-              ))}
-            </SkillsGrid>
-          </CategoryContainer>
-        ))}
+        <SkillsGrid>
+          {skills.map((skill, index) => (
+            <SkillBadge
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              viewport={{ once: true }}
+            >
+              {skill}
+            </SkillBadge>
+          ))}
+        </SkillsGrid>
       </Container>
     </SkillsSection>
   );
